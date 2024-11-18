@@ -1,0 +1,49 @@
+﻿@using TranTanPhuc.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<SACH>
+
+@{
+    ViewBag.Title = "Sách theo Nhà Xuất Bản";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 class="text-center">Sách theo nhà xuất bản: @ViewBag.TenNXB</h2>
+
+<div class="row text-center">
+    @foreach (var sach in Model)
+    {
+        <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+            <div class="thumbnail">
+                <img src="~/Images/@sach.AnhBia" alt="Thumbnail Image" class="img-responsive img-rounded imgbook" style="width:400px;">
+                <div class="caption">
+                    <h4 style="min-height:70px;">
+                        <a href="@Url.Action("ChiTietSach", "TranTanPhuc", new { id = sach.MaSach })">@sach.TenSach</a>
+                    </h4>
+                    <p>
+                        <a href="@Url.Action("ThemGioHang", "GioHang", new { id = sach.MaSach, url= Request.Url.ToString() })" class="btn btn-primary" role="button">
+                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<div>Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount</div>
+
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("NhaXuatBan", new { id = ViewBag.MaNXB, page = page }))
+</div>
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>
+@section SachBanNhieu {
+    @Html.Action("SachBanNhieuPartial", "TranTanPhuc")
+}
+
+@section Slider {
+    @Html.Action("SliderPartial", "TranTanPhuc")
+}

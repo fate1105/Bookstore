@@ -1,0 +1,54 @@
+﻿@model TranTanPhuc.Models.SACH
+
+<style type="text/css">
+    img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+
+    h3, h4 {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+<div class="panel panel-primary">
+    <div class="panel-heading justify-content-between align-items-center ">
+        Xác nhận xóa
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <h3>Bạn quyết định xóa quyển sách này?</h3>
+    <h4>@Html.Raw(ViewBag.ThongBao)</h4>
+    <div class="panel-body">
+        <div>
+            <dl class="dl-horizontal">
+                <dt>Tên sách:</dt>
+                <dd>@Html.DisplayFor(model => model.TenSach) </dd>
+                <dt> Mô tả: </dt>
+                <dd> @Html.Raw(@Model.MoTa.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp")) </dd>
+                <dt> Ảnh bìa: </dt>
+                <dd> <img src="~/Images/@Model.AnhBia" alt=" @Model.TenSach"> </dd>
+                <dt> Ngày cập nhật:</dt>
+                <dd> @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}") </dd>
+                <dt> Số lượng bán: </dt>
+                <dd> @Html.DisplayFor(model => model.SoLuongBan)</dd>
+                <dt>Giá bán: </dt>
+                <dd> @Html.FormatValue(@Model.GiaBan, "{0:#,##0}") VNĐ</dd>
+                <dt>Chủ đề:</dt>
+                <dd>@Html.DisplayFor(model => model.CHUDE.TenChuDe)</dd>
+                <dt>Nhà xuất bản:</dt>
+                <dd>@Html.DisplayFor(model => model.NHAXUATBAN.TenNXB)</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button type="submit" id="btnSave" class="btn btn-primary ">Xác nhận</button>
+    </div>
+}

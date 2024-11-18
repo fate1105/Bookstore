@@ -1,0 +1,88 @@
+﻿@model IEnumerable<TranTanPhuc.Models.SACH>
+
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@{
+    if (Model != null)
+    {
+        if (Model.Count() > 0)
+        {
+            <h2>Kết quả tìm kiếm: có @Model.Count() cuốn sách với từ khóa: @ViewBag.Search</h2>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaSach)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TenSach)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MoTa)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AnhBia)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NgayCapNhat)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SoLuongBan)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.GiaBan)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CHUDE.TenChuDe)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NHAXUATBAN.TenNXB)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaSach)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenSach)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MoTa)
+                        </td>
+                        <td>
+                            <img src="~/Images/@item.AnhBia" width="50" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NgayCapNhat)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoLuongBan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GiaBan)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CHUDE.TenChuDe)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NHAXUATBAN.TenNXB)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("ChiTietSach", "TranTanPhuc", new { id = item.MaSach })">Detail</a>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        }
+        else
+        {
+            <h2>Không tìm thấy kết quả nào cho từ khóa: @ViewBag.Search</h2>
+        }
+    }
+}

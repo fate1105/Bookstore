@@ -1,0 +1,58 @@
+﻿@model TranTanPhuc.Models.NHAXUATBAN
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+    <form name="CapNhatNhaXuatBan" action="~/Admin/NhaXuatBan/Edit" method="post">
+        <h3>Sua Nha Xuat Ban</h3>
+        <table>
+            <tr>
+                <td>
+                    <input type="hidden" name="MaNXB" value="@Model.MaNXB" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Ten Nha xuat ban:
+                </td>
+                <td>
+                    <input type="text" name="TenNXB" value="@Model.TenNXB" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Dia chi:
+                </td>
+                <td>
+                    <input type="text" name="DiaChi" value="@Model.DiaChi" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Dien thoai:
+                </td>
+                <td>
+                    <input type="text" name="DienThoai" value="@Model.DienThoai" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <input type="submit" value="Sua" />
+                    <input type="reset" value="Huy" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

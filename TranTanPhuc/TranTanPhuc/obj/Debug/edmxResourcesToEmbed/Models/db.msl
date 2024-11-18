@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SachOnlineModelStoreContainer" CdmEntityContainer="SachOnlineEntities">
+    <EntitySetMapping Name="ADMINs">
+      <EntityTypeMapping TypeName="SachOnlineModel.ADMIN">
+        <MappingFragment StoreEntitySet="ADMIN">
+          <ScalarProperty Name="MaAd" ColumnName="MaAd" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+          <ScalarProperty Name="TenDN" ColumnName="TenDN" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="Quyen" ColumnName="Quyen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHITIETDATHANGs">
+      <EntityTypeMapping TypeName="SachOnlineModel.CHITIETDATHANG">
+        <MappingFragment StoreEntitySet="CHITIETDATHANG">
+          <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
+          <ScalarProperty Name="MaSach" ColumnName="MaSach" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+          <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CHUDEs">
+      <EntityTypeMapping TypeName="SachOnlineModel.CHUDE">
+        <MappingFragment StoreEntitySet="CHUDE">
+          <ScalarProperty Name="MaCD" ColumnName="MaCD" />
+          <ScalarProperty Name="TenChuDe" ColumnName="TenChuDe" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DONDATHANGs">
+      <EntityTypeMapping TypeName="SachOnlineModel.DONDATHANG">
+        <MappingFragment StoreEntitySet="DONDATHANG">
+          <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
+          <ScalarProperty Name="DaThanhToan" ColumnName="DaThanhToan" />
+          <ScalarProperty Name="TinhTrangGiaoHang" ColumnName="TinhTrangGiaoHang" />
+          <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+          <ScalarProperty Name="NgayGiao" ColumnName="NgayGiao" />
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHACHHANGs">
+      <EntityTypeMapping TypeName="SachOnlineModel.KHACHHANG">
+        <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHAXUATBANs">
+      <EntityTypeMapping TypeName="SachOnlineModel.NHAXUATBAN">
+        <MappingFragment StoreEntitySet="NHAXUATBAN">
+          <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
+          <ScalarProperty Name="TenNXB" ColumnName="TenNXB" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SACHes">
+      <EntityTypeMapping TypeName="SachOnlineModel.SACH">
+        <MappingFragment StoreEntitySet="SACH">
+          <ScalarProperty Name="MaSach" ColumnName="MaSach" />
+          <ScalarProperty Name="TenSach" ColumnName="TenSach" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="AnhBia" ColumnName="AnhBia" />
+          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+          <ScalarProperty Name="SoLuongBan" ColumnName="SoLuongBan" />
+          <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+          <ScalarProperty Name="MaCD" ColumnName="MaCD" />
+          <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TACGIAs">
+      <EntityTypeMapping TypeName="SachOnlineModel.TACGIA">
+        <MappingFragment StoreEntitySet="TACGIA">
+          <ScalarProperty Name="MaTG" ColumnName="MaTG" />
+          <ScalarProperty Name="TenTG" ColumnName="TenTG" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="TieuSu" ColumnName="TieuSu" />
+          <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIETSACHes">
+      <EntityTypeMapping TypeName="SachOnlineModel.VIETSACH">
+        <MappingFragment StoreEntitySet="VIETSACH">
+          <ScalarProperty Name="MaTG" ColumnName="MaTG" />
+          <ScalarProperty Name="MaSach" ColumnName="MaSach" />
+          <ScalarProperty Name="VaiTro" ColumnName="VaiTro" />
+          <ScalarProperty Name="ViTri" ColumnName="ViTri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENUs">
+      <EntityTypeMapping TypeName="SachOnlineModel.MENU">
+        <MappingFragment StoreEntitySet="MENU">
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="MenuLink" ColumnName="MenuLink" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANGTINs">
+      <EntityTypeMapping TypeName="SachOnlineModel.TRANGTIN">
+        <MappingFragment StoreEntitySet="TRANGTIN">
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="TenTrang" ColumnName="TenTrang" />
+          <ScalarProperty Name="MaTT" ColumnName="MaTT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

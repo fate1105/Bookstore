@@ -1,0 +1,149 @@
+﻿@using TranTanPhuc.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<TranTanPhuc.Models.SACH>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@helper Truncate(string s, int length)
+{
+    if (s.Length < length)
+    {
+        @s
+    }
+    else
+    {
+        @s.Substring(0, length)<text>...</text>
+    }
+}
+
+<h2 style="text-align:center;">QUẢN LÝ THÔNG TIN SÁCH</h2>
+<div class="row mb-3" style="margin-bottom: 10px;">
+    <div class="col-md-6">
+        <button type="button" class="btn btn-primary" onclick="loadModal('@Url.Action("Create")')">Thêm sách</button>
+    </div>
+    <div class="col-md-6 text-right">
+        @using (Html.BeginForm("Index", "Sach", FormMethod.Get))
+        {
+            <div class="input-group" style="max-width: 400px; display: inline-flex;">
+                <input type="text" name="strSearch" value="@ViewBag.Search" placeholder="Nhập sản phẩm cần tìm..." class="form-control" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th style="text-align:center;width:140px">
+            Tên sách
+        </th>
+        <th style="text-align:center;width:200px">
+            Mô tả
+        </th>
+        <th style="text-align:center;width:80px">
+            @Html.DisplayNameFor(model => model.First().AnhBia)
+        </th>
+        <th style="text-align:center;width:100px">
+            Ngày cập nhật
+        </th>
+        <th style="text-align:center;width:80px">
+            Số lượng
+        </th>
+        <th style="text-align:center;width:80px">
+            @Html.DisplayNameFor(model => model.First().GiaBan)
+        </th>
+        <th style="text-align:center;width:100px">
+            Chủ đề
+        </th>
+        <th style="text-align:center;width:100px">
+            Nhà xuất bản
+        </th>
+        <th style="text-align:center"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @*Sử dụng helper để cắt TenSach lấy 50 ký tự*@ @Truncate(item.TenSach, 50)
+            </td>
+            <td>
+
+                @Html.Raw(Truncate(item.MoTa, 70).ToString())
+            </td>
+            <td>
+                <img src="~/Images/@item.AnhBia" style="width:50px;" />
+            </td>
+            <td>
+                @*Định dạng hiển thị*@ @Html.FormatValue(@item.NgayCapNhat, "{0:dd/MM/yyyy}")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuongBan)
+            </td>
+            <td>
+                @Html.FormatValue(item.GiaBan, "{0:#,##0}")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CHUDE.TenChuDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHAXUATBAN.TenNXB)
+            </td>
+            <td>
+                <button type="button" class="btn btn-warning" onclick="loadModal('@Url.Action("Edit", new { id = item.MaSach })')">Sửa</button>
+
+                <button type="button" class="btn btn-primary" onclick="loadModal('@Url.Action("Details", new { id = item.MaSach })')">Chi tiết</button>
+                <button type="button" class="btn btn-danger" onclick="loadModal('@Url.Action("Delete", new { id = item.MaSach })')">Xóa</button>
+
+            </td>
+        </tr>
+    }
+</table>
+
+@*Tạo liên kết phần trang*@
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+</div>
+
+<style>
+    .MenuTrang {
+        display: inline;
+        text-align: center;
+    }
+</style>
+
+<div class="modal fade" id="dynamicModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" id="modalContent">
+                <!-- Nội dung từ PartialView sẽ được chèn vào đây thông qua AJAX -->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    function loadModal(url, actionType) {
+        $.ajax({
+            url: url,
+            type: 'get',
+            success: function (data) {
+                $('#modalContent').html(data);
+                $('#dynamicModal').modal('show');
+            },
+            error: function () {
+                alert("Đã xảy ra lỗi khi tải nội dung.");
+            }
+        });
+    }
+</script>
+

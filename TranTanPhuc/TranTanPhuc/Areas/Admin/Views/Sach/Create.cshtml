@@ -1,0 +1,121 @@
+﻿@model TranTanPhuc.Models.SACH
+
+
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+
+<script src="~/Content/ckfinder/ckfinder.js"></script>
+<h2>THÊM SÁCH</h2>
+@*Thêm thuộc tính cho form để upload ảnh*@
+@using (Html.BeginForm("Create", "Sach", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="panel panel-primary">
+        <div class="panel-heading justify-content-between align-items-center ">
+            Thêm sách
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="panel-body">
+
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label class="control-label col-md-2">Tên sách:</label>
+                    <div class="col-md-10">
+                        <input type="text" size="55" name="sTenSach" value="@ViewBag.TenSach"
+                               required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">Mô tả:</label>
+                    <div class="col-md-10">
+                        <textarea name="sMoTa" id="mota">@ViewBag.MoTa</textarea>
+                        <script>CKEDITOR.replace('mota');</script>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Ảnh bìa:</label>
+                    <div class="col-md-10">
+                        <input type="file" name="FileUpload" accept="image/*" />
+                        @*Thông báo lỗi yêu cầu phải chọn ảnh bìa*@
+                        @ViewBag.ThongBao
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Ngày cập nhật:</label>
+                    <div class="col-md-10">
+                        <input type="date" name="dNgayCapNhat" required />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Số lượng:</label>
+                    <div class="col-md-10">
+                        <input type="number" min="1" required name="iSoLuong"
+                               value="@ViewBag.SoLuong" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Giá bán:</label>
+                    <div class="col-md-10">
+                        <input type="number" min="1" required name="mGiaBan"
+                               value="@ViewBag.GiaBan" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Chủ đề:</label>
+                    <div class="col-md-10">
+                        @*Hiển thị ViewBag.MaCD vào dropdownlist*@
+                        @Html.DropDownList("MaCD")
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Nhà xuất bản:</label>
+                    <div class="col-md-10">
+                        @Html.DropDownList("MaNXB")
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button type="submit" id="btnSave" class="btn btn-primary ">Lưu</button>
+    </div>
+}
+@*<script>
+    function validateImage() {
+        const fileInput = document.querySelector('input[name="FileUpload"]');
+        const file = fileInput.files[0];
+        const maxWidth = 400; // Chiều rộng tối đa
+        const maxHeight = 500; // Chiều cao tối đa
+
+        if (file) {
+            const img = new Image();
+            img.src = URL.createObjectURL(file);
+
+            img.onload = function () {
+                if (img.width != maxWidth || img.height != maxHeight) {
+                    alert(`Kích thước ảnh phải bằng ${maxWidth}x${maxHeight}px.`);
+                    fileInput.value = ""; // Xóa file đã chọn
+                    return false;
+                }
+                // Hủy object URL sau khi sử dụng
+                URL.revokeObjectURL(img.src);
+            };
+        }
+    }
+
+    document.querySelector('input[name="FileUpload"]').addEventListener('change', validateImage);
+</script>*@

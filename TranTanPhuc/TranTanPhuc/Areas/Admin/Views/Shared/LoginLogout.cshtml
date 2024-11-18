@@ -1,0 +1,16 @@
+﻿
+@using TranTanPhuc.Models @{
+    ADMIN am = (ADMIN)Session["Admin"];
+
+}
+
+@if (Session["Admin"] == null)
+{
+    <li><a href="@Url.Action("Login", "Home")"><span class="glyphicon glyphicon-log- in"></span> Đăng nhập</a></li>
+
+}
+else
+{
+    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Xin chào:@am.TenDN</a></li>
+    <li><a href="@Url.Action("DangXuat","Home")"><span class="glyphicon glyphicon-log- out"></span> Đăng xuất</a></li>
+}

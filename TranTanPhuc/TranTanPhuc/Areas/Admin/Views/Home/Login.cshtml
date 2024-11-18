@@ -1,0 +1,131 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    @Styles.Render("~/Content/Admin/css")
+    <style>
+        /* File: Admin.css */
+
+        /* Thiết lập phong cách cơ bản cho body */
+        body.box.login {
+            background: linear-gradient(to right, #8360c3, #2ebf91); /* Hiệu ứng chuyển màu nền */
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form.box.login {
+            background: #fff;
+            padding: 20px;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        fieldset.boxBody {
+            border: none;
+            padding: 0;
+        }
+
+        h4 {
+            color: #2ebf91;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #666;
+            font-weight: bold;
+            font-size: 14px;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+            input[type="text"]:focus, input[type="password"]:focus {
+                border-color: #2ebf91;
+                outline: none;
+            }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #2ebf91;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+            input[type="submit"]:hover {
+                background-color: #24a67a;
+            }
+
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+            footer label {
+                font-size: 12px;
+                color: #666;
+            }
+
+        .rLink {
+            font-size: 12px;
+            text-decoration: none;
+            color: #2ebf91;
+        }
+
+            .rLink:hover {
+                text-decoration: underline;
+            }
+
+        p {
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body class="box login">
+    <form action="~/Admin/Home/Login" method="post" class="box login">
+        <fieldset class="boxBody">
+            <h4 style="text-align:center; font-weight: bold">LOGIN ADMIN</h4>
+            <label>Username</label>
+            <input type="text" tabindex="1" name="UserName" placeholder="Type your username" required>
+
+            <label>Password<a href="#" class="rLink" tabindex="5" style="float:right;">Forget your password?</a></label>
+            <input type="password" tabindex="2" name="Password" placeholder="Type your password" required>
+
+            <p style="font-style: italic; color: red; margin: 0px;">@ViewBag.ThongBao</p>
+        </fieldset>
+
+        <footer>
+            <label><input type="checkbox" tabindex="3">Keep me logged in</label>
+            <input type="submit" class="btnLogin" value="Login"  
+                   tabindex="4">
+        </footer>
+    </form>
+
+</body>
+</html>

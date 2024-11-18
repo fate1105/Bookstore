@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "ChiTietSach";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 class="text-center">Chi Tiết Sách</h2>
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover">
+            <tr>
+                <th colspan="2" class="text-center" style="background-color: #343a40; color: white;">Thông Tin Chi Tiết Sách</th>
+            </tr>
+            <tbody>
+                <tr>
+                    <td class="text-left"><strong>Tên sách:</strong></td>
+                    <td>@Model.TenSach</td>
+                </tr>
+                <tr>
+                    <td class="text-left"><strong>Ảnh bìa:</strong></td>
+                    <td>
+                        <img src="~/Images/@Model.AnhBia" alt="@Model.TenSach" class="img-fluid img-thumbnail">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-left"><strong>Mô tả:</strong></td>
+                    <td>
+                        <p class="mota">
+                            @Html.Raw(@Model.MoTa.ToString().Replace("\n", "<br>"))
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-left"><strong>Ngày cập nhật:</strong></td>
+                    <td>@Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}")</td>
+                </tr>
+                <tr>
+                    <td class="text-left"><strong>Giá bán:</strong></td>
+                    <td>@Html.FormatValue(@Model.GiaBan, "{0:#,##0}") VND</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-left mt-4">
+        <a href="@Url.Action("ThemGioHang", "GioHang", new { id = @Model.MaSach, url= Request.Url.ToString() })" class="btn btn-primary" role="button">
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart
+        </a>
+    </div>
+</div>
+
+<style>
+
+    .table {
+        width: 70%;
+    }
+
+        .table td, .table th {
+            padding: 15px;
+            vertical-align: middle;
+        }
+
+        .table .img-fluid {
+            max-width: 150px;
+            height: auto;
+        }
+
+    .mota {
+        max-height: 100px;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: none;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+    }
+
+    .table td:first-child {
+        width: 15%;
+    }
+</style>

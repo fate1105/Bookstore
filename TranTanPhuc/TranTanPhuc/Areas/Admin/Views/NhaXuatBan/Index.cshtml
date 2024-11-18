@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TranTanPhuc.Models.NHAXUATBAN>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <a  href="~/Admin/NhaXuatBan/Create">Them</a>
+    <table class="table" border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaNXB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenNXB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DienThoai)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNXB)
+            </td>
+            <td>/
+                @Html.DisplayFor(modelItem => item.TenNXB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienThoai)
+            </td>
+            <td>
+                <a href="~/Admin/NhaXuatBan/Edit?id=@item.MaNXB">Sua</a>
+                <a href="~/Admin/NhaXuatBan/Detail?id=@item.MaNXB">Xem chi tiet</a>
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
